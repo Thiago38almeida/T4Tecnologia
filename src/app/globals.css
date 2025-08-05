@@ -1,0 +1,53 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: white;
+  background: linear-gradient(135deg, #0A192F 0%, #1A1A1A 100%);
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.glass-effect {
+  background: rgba(10, 25, 47, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 255, 247, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #00FFF7 0%, #3A8DFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #00FFF7 0%, #3A8DFF 100%);
+  color: #0A192F;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 32px rgba(0, 255, 247, 0.5);
+}
