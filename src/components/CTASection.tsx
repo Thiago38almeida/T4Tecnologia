@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ArrowRight, Phone, Mail } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import ContactModal from './Modal/ContactModal'
 
 export default function CTASection() {
   const [ref, inView] = useInView({
@@ -14,6 +15,8 @@ export default function CTASection() {
   type Particle = { left: number; top: number }
 
   const [particles, setParticles] = useState<Particle[]>([])
+
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     // Só roda no cliente!
@@ -40,24 +43,24 @@ export default function CTASection() {
           {/* Background Animation */}
           <div className="absolute inset-0 opacity-10">
             {particles.map((p, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-primary-cyan rounded-full"
-              style={{
-                left: `${p.left}%`,
-                top: `${p.top}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 1, 0.2],
-              }}
-              transition={{
-                duration: 3 + (i % 5),
-                repeat: Infinity,
-                delay: (i % 10) * 0.2,
-              }}
-            />
-          ))}
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-primary-cyan rounded-full"
+                style={{
+                  left: `${p.left}%`,
+                  top: `${p.top}%`,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  opacity: [0.2, 1, 0.2],
+                }}
+                transition={{
+                  duration: 3 + (i % 5),
+                  repeat: Infinity,
+                  delay: (i % 10) * 0.2,
+                }}
+              />
+            ))}
           </div>
 
           <div className="relative z-10">
@@ -66,21 +69,26 @@ export default function CTASection() {
             </h2>
 
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Entre em contato conosco e descubra como nossas soluções podem 
+              Entre em contato conosco e descubra como nossas soluções podem
               revolucionar sua operação.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <motion.button
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary px-8 py-4 rounded-xl text-lg font-bold flex items-center justify-center gap-2"
+                className="btn-primary px-8 py-4 rounded-xl text-lg font-bold animate-glow"
+                onClick={() => setOpen(true)}
               >
-                Fale com um especialista
-                <ArrowRight className="w-5 h-5" />
+                Falar com um especialista
               </motion.button>
 
-          
+
+
+
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center text-gray-300">
@@ -95,6 +103,7 @@ export default function CTASection() {
             </div>
           </div>
         </motion.div>
+              <ContactModal open={open} onClose={() => setOpen(false)} />
       </div>
     </section>
   )
