@@ -80,13 +80,7 @@ export default function CTASection() {
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-primary-cyan text-primary-cyan px-8 py-4 rounded-xl text-lg font-bold hover:bg-primary-cyan hover:text-primary-dark transition-all duration-300"
-              >
-                Agendar demonstração
-              </motion.button>
+          
             </div>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center text-gray-300">
