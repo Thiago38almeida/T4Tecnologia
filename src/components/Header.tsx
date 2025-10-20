@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import ContactModal from '@/components/Modal/ContactModal'
+import ContactModal from '../components/Modal/ContactModal'
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
